@@ -1,4 +1,19 @@
-# RAT (is an Analysis Tool), Watchman Edition
+# RAT (is an Analysis Tool)
+
+## Problem 
+İf you get the problem Is $GLG4DATA set?
+Solution: Make sure your RATSHARE and GLG4DATA set correctly. 
+it should be set 
+```
+export RATSHARE=/home/enrg/Software/WMUtils/enrg_ratpac
+export GLG4DATA=$RATSHARE/data
+```
+You may also check the corret varıable 
+```
+echo ${RATSHARE}
+echo ${GLG4DATA}
+```
+
 [![Documentation Status](https://readthedocs.org/projects/ratpac-watchman/badge/?version=latest)](https://ratpac-watchman.readthedocs.io/en/latest/?badge=latest)
 [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/aitwatchman/ratpac)](https://hub.docker.com/r/aitwatchman/ratpac)
 
