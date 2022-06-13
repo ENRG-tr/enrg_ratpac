@@ -1,14 +1,15 @@
 # RAT (is an Analysis Tool)
 
-## Problem 
-İf you get the problem Is $GLG4DATA set?
-Solution: Make sure your RATSHARE and GLG4DATA set correctly. 
+### Problem 
+İf you get the problem **Is $GLG4DATA set?**
+
+**Solution:** Make sure your **RATSHARE** and **GLG4DATA** set up correctly. 
 it should be set 
 ```
 export RATSHARE=/home/enrg/Software/WMUtils/enrg_ratpac
 export GLG4DATA=$RATSHARE/data
 ```
-You may also check the corret varıable 
+You may also check the corret variable 
 ```
 echo ${RATSHARE}
 echo ${GLG4DATA}
