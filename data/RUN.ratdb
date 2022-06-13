@@ -1,8 +1,0 @@
-/* Run conditions */
-{
-name: "RUN",
-run_range: [0, 0],
-
-runtype: 0,
-}
-
