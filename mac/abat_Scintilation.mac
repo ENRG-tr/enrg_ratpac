@@ -1,0 +1,68 @@
+################################################
+############    DETECTOR #######################
+################################################
+/glg4debug/glg4param omit_muon_processes  1.0
+/glg4debug/glg4param omit_hadronic_processes 1.0 
+
+/tracking/verbose 0
+
+/rat/db/set DETECTOR experiment "abat"
+/rat/db/set DETECTOR geo_file "abat/abat.geo"
+
+/run/initialize
+###############################################
+##### Cherenkov
+#/process/activate Cerenkov all
+#/glg4scint/off
+
+####Scintilation
+/process/inactivate Cerenkov all
+/glg4scint/on
+
+###############################################
+############   PROCESS  #######################
+###############################################
+#just making eneable to track opticalphoton and electron
+/tracking/storeTrajectory 1
+#/tracking/discardParticleTrajectory opticalphoton
+#/tracking/discardParticleTrajectory e-
+
+# BEGIN EVENT LOOP
+/rat/proc lesssimpledaq
+/rat/proc fitbonsai
+/rat/proc fitcentroid
+#fitpath require a FTP.ratdb with a lot of defination
+#/rat/proc fitpath
+
+/rat/proc prune
+#/rat/procset prune "mc.track:opticalphoton"
+#/rat/procset prune "mc.track:e-"
+
+/rat/proc count
+/rat/procset update 100
+#################################################
+############    OUTPUT    #######################
+#################################################
+
+# Use IO.default_output_filename
+/rat/proclast outroot
+/rat/procset file "abat_Scintilation.root"
+#END EVENT LOOP
+
+#################################################
+############   PHYS EVENT  ######################
+#################################################
+#/generator/add combo gun2:regexfill:poisson
+#/generator/vtx/set neutron  0 0 0 0 0.001 0.20
+
+
+/generator/add combo gun2:point
+/generator/vtx/set neutron  0 0 0 0 0.001 0.20
+/generator/pos/set 0 0 0
+
+
+#################################################
+############    Number OF RUN ###################
+#################################################
+/run/beamOn 10000
+
