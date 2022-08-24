@@ -1,24 +1,13 @@
 ################################################
 ############    DETECTOR #######################
 ################################################
-/glg4debug/glg4param omit_muon_processes  1.0
-/glg4debug/glg4param omit_hadronic_processes 1.0 
+/glg4debug/glg4param omit_muon_processes  0
+/glg4debug/glg4param omit_hadronic_processes 0 
 
-/tracking/verbose 0
-
-/rat/db/set DETECTOR experiment "abat"
-/rat/db/set DETECTOR geo_file "abat/abat.geo"
+/rat/db/set DETECTOR experiment "enrg"
+/rat/db/set DETECTOR geo_file "enrg/enrg_3t.geo"
 
 /run/initialize
-###############################################
-##### Cherenkov
-/process/activate Cerenkov all
-/glg4scint/off
-
-####Scintilation
-#/process/inactivate Cerenkov all
-#/glg4scint/on
-
 ###############################################
 ############   PROCESS  #######################
 ###############################################
@@ -46,25 +35,25 @@
 
 # Use IO.default_output_filename
 /rat/proclast outroot
-/rat/procset file "abat_Cherenkov.root"
+/rat/procset file "enrg_bkg_241BiPMT.root"
 #END EVENT LOOP
 
 #################################################
 ############   PHYS EVENT  ######################
 #################################################
-#/generator/add combo gun2:regexfill:poisson
-#/generator/vtx/set neutron  0 0 0 0 0.001 0.20
+#/generator/add combo reacibd:point 
+#9Li Backgroıund : not workıing
+#/generator/add li 9:regexfill:poisson
+################################################
 
+#generate example inner pmt background using single isotope
+/generator/add decaychain 214Bi:regexfill:poisson
+/generator/pos/set inner_pmts
+/generator/rate/set 20
+################################################
 
-#/generator/add combo gun2:fill:poisson
-#/generator/vtx/set neutron  0 0 0 0 0.001 0.20
+#/generator/vtx/set 0 0 1.0
 #/generator/pos/set 0 0 0
-
-
-/generator/add combo gun:regexfill
-/generator/vtx/set neutron  0 0 0 5
-/generator/pos/set 0 0 0
-
 
 #################################################
 ############    Number OF RUN ###################

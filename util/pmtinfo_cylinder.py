@@ -11,9 +11,9 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-o", "--outfile", default="PMTINFO.ratdb")
     parser.add_argument("-c", "--coverage", type=float, default=0.20)
-    parser.add_argument("--veto_coverage",  type=float, default=0.02)
-    parser.add_argument("-r", "--radius",   type=float, default=6700)
-    parser.add_argument("--pmt_radius",     type=float, default=126.5)
+    parser.add_argument("--veto_coverage",  type=float, default=0.001)
+    parser.add_argument("-r", "--radius",   type=float, default=2000)
+    parser.add_argument("--pmt_radius",     type=float, default=101.6)
     parser.add_argument("--circletop", action='store_true')
     return parser.parse_args()
 

@@ -18,14 +18,15 @@
 ####Scintilation
 /process/inactivate Cerenkov all
 /glg4scint/on
-
+#/PhysicsList/setOpWLS g4
+/PhysicsList/setOpWLS bnl
 ###############################################
 ############   PROCESS  #######################
 ###############################################
 #just making eneable to track opticalphoton and electron
 /tracking/storeTrajectory 1
-#/tracking/discardParticleTrajectory opticalphoton
-#/tracking/discardParticleTrajectory e-
+/tracking/discardParticleTrajectory opticalphoton
+/tracking/discardParticleTrajectory e-
 
 # BEGIN EVENT LOOP
 /rat/proc lesssimpledaq
@@ -35,8 +36,8 @@
 #/rat/proc fitpath
 
 /rat/proc prune
-#/rat/procset prune "mc.track:opticalphoton"
-#/rat/procset prune "mc.track:e-"
+/rat/procset prune "mc.track:opticalphoton"
+/rat/procset prune "mc.track:e-"
 
 /rat/proc count
 /rat/procset update 100
@@ -52,17 +53,28 @@
 #################################################
 ############   PHYS EVENT  ######################
 #################################################
-#/generator/add combo gun2:regexfill:poisson
-#/generator/vtx/set neutron  0 0 0 0 0.001 0.20
-
-
-/generator/add combo gun2:point
+### neutron
+/generator/add combo gun2:fill:poisson
 /generator/vtx/set neutron  0 0 0 0 0.001 0.20
-/generator/pos/set 0 0 0
+
+###gamma
+#/generator/add combo gun2:fill
+#/generator/vtx/set gamma  0 0 0 0 10.0 10.0
+#/generator/pos/set 0 0 0
+
+### 
+#/generator/add combo gun2:point
+#/generator/vtx/set e- 0 0 0 0 10.0 10.0
+#/generator/pos/set 0 0 0
+
+
+#/generator/add combo gun2:point
+#/generator/vtx/set neutron  0 0 0 0 0.001 0.20
+#/generator/pos/set 0 0 0
 
 
 #################################################
 ############    Number OF RUN ###################
 #################################################
-/run/beamOn 10000
+/run/beamOn 1000
 
