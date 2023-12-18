@@ -1,0 +1,8 @@
+# Analysis Process
+* First you need to start with getFromRAT.py
+* How to work with this python file 
+  ** python3 getFromRAT.py -f ../pos1.root -n1 0 -n2 10000 -o pos1 > name_of_csv_file.csv  
+    ***-f is the root file location
+    *** -n1 first number of events that you want to start with
+    *** -n2 is the last number of event that you want yo finish your run
+    *** -o name of output file it also create .csv and json file if you call the funcition in the python file
